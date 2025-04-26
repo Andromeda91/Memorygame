@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Süti Memóriajáték</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Retro Süti Memóriajáték</h1>
+    <div id="stats">
+        <div id="timer">Eltelt idő: 0 másodperc</div>
+        <div id="attempts">Próbálkozások: 0</div>
+        <div id="bestTime">Legjobb idő: nincs</div>
+    </div>
+    <div class="game-board" id="gameBoard"></div>
+    <div id="winMessage" style="display:none; margin-top: 20px; font-size: 20px; color: #a0522d;"></div>
+    <button id="restartButton" style="display:none; margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Újrajátszás</button>
+
+    <audio id="flipSound" src="sounds/flip.mp3"></audio>
+    <audio id="matchSound" src="sounds/match.mp3"></audio>
+    <audio id="winSound" src="sounds/win.mp3"></audio>
+
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999;"></canvas>
+
+    <script src="confetti.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
