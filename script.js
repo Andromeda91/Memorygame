@@ -19,9 +19,9 @@ const bestTimeDisplay = document.getElementById('bestTime');
 const winMessage = document.getElementById('winMessage');
 const restartButton = document.getElementById('restartButton');
 
-const flipSound = document.getElementById('flipSound');
-const matchSound = document.getElementById('matchSound');
-const winSound = document.getElementById('winSound');
+const flipSound = document.getElementById('flip.mp3');
+const matchSound = document.getElementById('match.mp3');
+const winSound = document.getElementById('win.mp3');
 
 let firstCard = null;
 let secondCard = null;
