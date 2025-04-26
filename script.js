@@ -40,7 +40,7 @@ function setupGame() {
         const card = document.createElement('div');
         card.classList.add('card');
         const img = document.createElement('img');
-        img.src = 'img/' + image;
+        img.src = image;
         card.appendChild(img);
         card.addEventListener('click', () => flipCard(card));
         gameBoard.appendChild(card);
