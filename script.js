@@ -1,4 +1,3 @@
-
 const originalCards = [
     'keksztekercs.png', 'keksztekercs.png',
     'fanta_szelet1.png', 'fanta_szelet1.png',
@@ -19,9 +18,10 @@ const bestTimeDisplay = document.getElementById('bestTime');
 const winMessage = document.getElementById('winMessage');
 const restartButton = document.getElementById('restartButton');
 
-const flipSound = document.getElementById('flip.mp3');
-const matchSound = document.getElementById('match.mp3');
-const winSound = document.getElementById('win.mp3');
+// Hangfájlok inicializálása
+const flipSound = new Audio('flip.mp3');
+const matchSound = new Audio('match.mp3');
+const winSound = new Audio('win.mp3');
 
 let firstCard = null;
 let secondCard = null;
@@ -67,7 +67,7 @@ function flipCard(card) {
     if (lockBoard) return;
     if (card === firstCard) return;
 
-    flipSound.play();
+    flipSound.play(); // Hang lejátszása
     card.classList.add('flipped');
     const img = card.querySelector('img');
     img.style.display = 'block';
@@ -86,7 +86,7 @@ function flipCard(card) {
 function checkForMatch() {
     const isMatch = firstCard.querySelector('img').src === secondCard.querySelector('img').src;
     if (isMatch) {
-        matchSound.play();
+        matchSound.play(); // Párosítás hang lejátszása
         matchesFound++;
         resetCards();
         if (matchesFound === cards.length / 2) {
@@ -120,8 +120,8 @@ function showWinMessage() {
     winMessage.textContent = `Gratulálok, minden párt megtaláltál! Idő: ${elapsedTime} másodperc, Próbálkozások: ${attempts}` + (newRecord ? " (Új rekord!)" : "");
     winMessage.style.display = 'block';
     restartButton.style.display = 'inline-block';
-    winSound.play();
-    launchConfetti();
+    winSound.play(); // Győzelmi hang lejátszása
+    launchConfetti(); // Konfetti indítása
     updateBestTimeDisplay();
 }
 
@@ -138,4 +138,13 @@ function startTimer() {
         const elapsed = Math.floor((Date.now() - startTime) / 1000);
         timerDisplay.textContent = `Eltelt idő: ${elapsed} másodperc`;
     }, 1000);
+}
+
+// Konfetti indítása (canvas-confetti könyvtár használata)
+function launchConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
