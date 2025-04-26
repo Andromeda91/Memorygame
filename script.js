@@ -1,14 +1,14 @@
 
 const originalCards = [
     'keksztekercs.png', 'keksztekercs.png',
-    'fanta_szelet.png', 'fanta_szelet.png',
-    'gesztenyesziv.png', 'gesztenyesziv.png',
+    'fanta_szelet1.png', 'fanta_szelet1.png',
+    'gesztenyesziv1.png', 'gesztenyesziv1.png',
     'mignon.png', 'mignon.png',
     'linzer.png', 'linzer.png',
     'dobos.png', 'dobos.png',
     'piskotateker.png', 'piskotateker.png',
     'kokuszkocka.png', 'kokuszkocka.png',
-    'barack.png', 'barack.png',
+    'barack1.png', 'barack1.png',
 ];
 
 let cards = [];
