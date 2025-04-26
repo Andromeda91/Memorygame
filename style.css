@@ -10,8 +10,8 @@ body {
 
 #gameBoard {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
     width: 90%;
     max-width: 1000px;
     margin: 40px auto;
@@ -39,7 +39,7 @@ body {
     object-fit: cover;
     backface-visibility: hidden;
     border-radius: 10px;
-    display: none; /* csak kattintás után látszik */
+    display: none;
 }
 
 #timer, #attempts, #bestTime {
