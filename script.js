@@ -5,7 +5,7 @@ const originalCards = [
     'mignon.png', 'mignon.png',
     'linzer.png', 'linzer.png',
     'dobos.png', 'dobos.png',
-    'piskotateker.png', 'piskotateker.png',
+    'piskotatekerc.png', 'piskotatekerc.png',
     'kokuszkocka.png', 'kokuszkocka.png',
     'barack1.png', 'barack1.png',
 ];
@@ -18,10 +18,9 @@ const bestTimeDisplay = document.getElementById('bestTime');
 const winMessage = document.getElementById('winMessage');
 const restartButton = document.getElementById('restartButton');
 
-// Hangfájlok inicializálása
-const flipSound = new Audio('flip.mp3');
-const matchSound = new Audio('match.mp3');
-const winSound = new Audio('win.mp3');
+const flipSound = document.getElementById('flipSound');
+const matchSound = document.getElementById('matchSound');
+const winSound = document.getElementById('winSound');
 
 let firstCard = null;
 let secondCard = null;
@@ -67,7 +66,7 @@ function flipCard(card) {
     if (lockBoard) return;
     if (card === firstCard) return;
 
-    flipSound.play(); // Hang lejátszása
+    flipSound.play();
     card.classList.add('flipped');
     const img = card.querySelector('img');
     img.style.display = 'block';
@@ -84,9 +83,11 @@ function flipCard(card) {
 }
 
 function checkForMatch() {
-    const isMatch = firstCard.querySelector('img').src === secondCard.querySelector('img').src;
+    const firstImg = firstCard.querySelector('img').src;
+    const secondImg = secondCard.querySelector('img').src;
+    const isMatch = firstImg === secondImg;
     if (isMatch) {
-        matchSound.play(); // Párosítás hang lejátszása
+        matchSound.play();
         matchesFound++;
         resetCards();
         if (matchesFound === cards.length / 2) {
@@ -120,8 +121,15 @@ function showWinMessage() {
     winMessage.textContent = `Gratulálok, minden párt megtaláltál! Idő: ${elapsedTime} másodperc, Próbálkozások: ${attempts}` + (newRecord ? " (Új rekord!)" : "");
     winMessage.style.display = 'block';
     restartButton.style.display = 'inline-block';
-    winSound.play(); // Győzelmi hang lejátszása
-    launchConfetti(); // Konfetti indítása
+    winSound.play();
+
+    // Konfetti
+    confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
     updateBestTimeDisplay();
 }
 
@@ -138,13 +146,4 @@ function startTimer() {
         const elapsed = Math.floor((Date.now() - startTime) / 1000);
         timerDisplay.textContent = `Eltelt idő: ${elapsed} másodperc`;
     }, 1000);
-}
-
-// Konfetti indítása (canvas-confetti könyvtár használata)
-function launchConfetti() {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
 }
